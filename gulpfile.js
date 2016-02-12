@@ -84,4 +84,12 @@ gulp.task('watch', function() {
 	gulp.watch(config.paths.js, ['js', 'lint']);
 });
 
+gulp.task('serveprod', function() {
+  connect.server({
+    root: config.devBaseUrl,
+    port: config.port || 5000, 
+    livereload: false
+  });
+});
+
 gulp.task('default', ['html', 'js', 'css', 'images', 'lint', 'open', 'watch']);
