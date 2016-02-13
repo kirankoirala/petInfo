@@ -10,6 +10,7 @@ var reactify = require('reactify');
 var source = require('vinyl-source-stream'); 
 var concat = require('gulp-concat');
 var lint = require('gulp-eslint');
+var build = require('gulp-build');
 
 var config = {
 	port: 9005,
@@ -90,6 +91,12 @@ gulp.task('serveprod', function() {
     port: config.port || 5000, 
     livereload: false
   });
+});
+ 
+gulp.task('build', function() {
+  gulp.src('scripts/*.js')
+      .pipe(build({ GA_ID: '123456' }))
+      .pipe(gulp.dest('dist'))
 });
 
 gulp.task('default', ['html', 'js', 'css', 'images', 'lint', 'open', 'watch']);
