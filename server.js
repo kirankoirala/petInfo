@@ -18,6 +18,11 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
+// set the home page route
+app.get('/customer', function(req, res) {
+	res.render('customer');
+});
+
 app.listen(port, function() {
 	console.log('Our app is running on http://localhost:' + port);
 });
