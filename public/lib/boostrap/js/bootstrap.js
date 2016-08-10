@@ -225,8 +225,6 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
     if (changed) this.$element.toggleClass('active')
   }
-
-
   // BUTTON PLUGIN DEFINITION
   // ========================
 
