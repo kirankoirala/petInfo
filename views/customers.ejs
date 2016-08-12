@@ -9,9 +9,23 @@
         <th>Phone</th>
         </thead>
         <tbody>
-        <tr><td>001</td><td>John Smith</td><td>Westlake OH</td><td>987-222-9876</td></tr>
-        <tr><td>002</td><td>Mark Johnson</td><td>Avon Lake</td><td>876-980-3241</td></tr>
+            <% for(var i=0; i<customers.length; i++) { %>
+                <tr>
+                    <td><%= customers[i].id %></td>
+                    <td><%= customers[i].name %></td>
+                    <td><%= customers[i].address %></td>
+                    <td><%= customers[i].phone %></td>
+                </tr>
+            <% } %>
         </tbody>
+        <tfoot>
+        <tr>
+            <td>
+                <a href="customers/add">Add</a>
+            </td>
+        </tr>
+
+        </tfoot>
     </table>
 </div>
 
