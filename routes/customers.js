@@ -1,5 +1,8 @@
+var bodyParser = require('body-parser');
 var express = require('express');
 var router = express.Router();
+var app = express();
+app.use(bodyParser.json());
 
 var customer_queries = require('../db/queries/customer_query')
 
@@ -22,8 +25,7 @@ router.get('/add',function(req,res){
 });
 
 router.post('/add',function(req,res){
-    console.log('test');
-    console.log(req);
+    customer_queries.add_customer(req.body);
 });
 
 module.exports = router;

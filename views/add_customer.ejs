@@ -1,19 +1,37 @@
 <% layout('layout') -%>
 <h1>Add Customer</h1>
-<form action="" method="post">
-<table>
+<table id="customerTable">
     <tr>
         <td>Name</td>
-        <td><input type="text" id="name"></input></td>
+        <td><input type="text" id="name" data-bind="value: name"></input></td>
     </tr>
     <tr>
         <td>Address</td>
-        <td><input type="text" id="address"></input></td>
+        <td><input type="text" id="address" data-bind="value: address"></input></td>
     </tr>
     <tr>
         <td>phone</td>
-        <td><input type="text" id="phone"></input></td>
+        <td><input type="text" id="phone" data-bind="value: phone"></input></td>
     </tr>
+    <tfoot>
+    <tr>
+        <td>
+            <input type="button" value="Save" data-bind="click: save"/>
+        </td>
+    </tr>
+    </tfoot>
 </table>
-<input type="submit" value="Save"></input>
-</form>
+<script type="application/javascript">
+    var data = {
+        name: ko.observable(''),
+        address:ko.observable(''),
+        phone:ko.observable(''),
+        save: function(){
+            console.log(this.name());
+            console.log(this.address());
+            console.log(this.phone());
+            $.post('add',{name:this.name(),address:this.address(),phone:this.phone()});
+        }
+    };
+    ko.applyBindings(data,$('customerTable')[0]);
+</script>
