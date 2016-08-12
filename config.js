@@ -2,8 +2,14 @@ module.exports = config = {
     "name" : "Application",
     "favicon" : "--foo--",
 
-    "facebook" : {
-        application_id : "--- ADD APP ID HERE ---",
-        application_secret : "--- APP APP SECRET HERE ---"
+    "env" : {
+        devConnectionString : {
+            connection : {
+                    host:'ec2-54-243-126-40.compute-1.amazonaws.com',
+                    user: 'rhsdzlbslopson',
+                    password: '1s_oJt27XbsYszLchUdotYHAMJ',
+                    database: 'd6vqlp75rbdmeg'
+            }
+        }
     }
 }

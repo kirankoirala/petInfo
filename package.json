@@ -12,9 +12,11 @@
     "ejs": "~2.3.3",
     "ejs-locals": "^1.0.2",
     "express": "~4.13.3",
+    "knex": "^0.11.10",
     "morgan": "~1.6.1",
     "passport": "^0.2.2",
     "passport-facebook": "^2.0.0",
+    "pg": "^6.1.0",
     "serve-favicon": "~2.3.0"
   }
 }
