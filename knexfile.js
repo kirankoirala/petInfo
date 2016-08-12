@@ -1,3 +1,6 @@
+var pg = require('pg');
+pg.defaults.ssl = true;
+
 module.exports = {
   local: {
     client: 'pg',
@@ -16,12 +19,16 @@ module.exports = {
   },
   development: {
     client: 'pg',
-    connection: process.env.devConnectionString,
+    connection: "postgres://jtvnjffuzogrqi:zDll8QwgCVBrj3BN3NB2afe0vV@ec2-54-243-126-40.compute-1.amazonaws.com:5432/d6vqlp75rbdmeg",
     migrations: {
       directory: __dirname + '/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/db/seeds/stage'
+      directory: __dirname + '/db/seeds/development'
+    },
+    pool: {
+      min: 1,
+      max: 7
     }
   }
   //test: {
