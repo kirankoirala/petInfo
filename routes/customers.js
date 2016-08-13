@@ -25,9 +25,14 @@ router.get('/add',function(req,res){
 });
 
 router.get('/edit/:customer_id',function(req,res){
-    res.render('add_customer',{
-        title: 'Edit Customer'
-    });
+    var customer_id = req.params.id;
+    function renderData(data){
+        res.render('add_customer', {
+            title: 'Edit Customers',
+            customers:data
+        });
+    }
+    customer_queries.get_customer_by_id(customer_id, renderData());
 });
 
 router.post('/add',function(req,res){

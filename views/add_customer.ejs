@@ -22,16 +22,15 @@
     </tfoot>
 </table>
 <script type="application/javascript">
-    var data = {
-        name: ko.observable(''),
-        address:ko.observable(''),
-        phone:ko.observable(''),
-        save: function(){
-            console.log(this.name());
-            console.log(this.address());
-            console.log(this.phone());
-            $.post('add',{name:this.name(),address:this.address(),phone:this.phone()});
+    var custVM = function(customer) {
+        var self = this;
+        self.name = customer ? ko.observable(customer.name) : '';
+        self.address = customer ? ko.observable(customer.address) : '';
+        self.phone = customer ? ko.observable(customer.phone) : '';
+        self.save = function () {
+            $.post('add', {name: this.name(), address: this.address(), phone: this.phone()});
         }
-    };
-    ko.applyBindings(data,$('customerTable')[0]);
+        return self;
+    }();
+    ko.applyBindings(custVM,$('customerTable')[0]);
 </script>
