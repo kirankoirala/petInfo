@@ -24,6 +24,12 @@ router.get('/add',function(req,res){
     });
 });
 
+router.get('/edit/:customer_id',function(req,res){
+    res.render('add_customer',{
+        title: 'Edit Customer'
+    });
+});
+
 router.post('/add',function(req,res){
     customer_queries.add_customer(req.body);
 });

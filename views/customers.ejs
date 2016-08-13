@@ -7,6 +7,7 @@
         <th>Customer</th>
         <th>Address</th>
         <th>Phone</th>
+        <td> &nbsp;</td>
         </thead>
         <tbody>
             <% for(var i=0; i<customers.length; i++) { %>
@@ -15,6 +16,9 @@
                     <td><%= customers[i].name %></td>
                     <td><%= customers[i].address %></td>
                     <td><%= customers[i].phone %></td>
+                    <td>
+                        <a href="customers/edit/<%= customers[i].id %>">edit</a>
+                    </td>
                 </tr>
             <% } %>
         </tbody>
@@ -24,7 +28,6 @@
                 <a href="customers/add">Add</a>
             </td>
         </tr>
-
         </tfoot>
     </table>
 </div>
