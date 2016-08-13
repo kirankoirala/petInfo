@@ -11,5 +11,6 @@ module.exports = config = {
     }
 
     },
+    
     "NODE_ENV" : "development"
 }
