@@ -3,7 +3,7 @@
 <table id="customerTable">
     <tr>
         <td>Name</td>
-        <td><input type="text" id="name" data-bind="value: first_name"></input></td>
+        <td><input type="text" id="name" data-bind="value: customer_name"></input></td>
     </tr>
     <tr>
         <td>Address</td>
@@ -33,16 +33,21 @@
     });
 
     var custVM = function (customer) {
-        this.name = ko.observable(customer.name),
-                this.address = ko.observable(customer.address),
-                this.phone =ko.observable(customer.phone),
-                this.save = function () {
-                    $.post('update',
-                            {name: this.name(),
-                            address: this.address(),
-                            phone: this.phone()});
-                }
+        var self = this;
+        self.customer_name = ko.observable(customer.name),
+                self.address = ko.observable(customer.address),
+                self.phone =ko.observable(customer.phone),
+                self.id =ko.observable(customer.id),
+                self.save = function () {
+                        $.post('update',
+                        {
+                            id:self.id,
+                            name: self.customer_name(),
+                            address: self.address(),
+                            phone: self.phone()
+                        });
 
-        return this;
+                };
+        return self;
     };
 </script>

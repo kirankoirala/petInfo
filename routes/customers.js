@@ -27,7 +27,6 @@ router.get('/add',function(req,res){
 router.get('/edit/:customer_id',function(req,res){
     var customer_id = req.params.customer_id;
     function renderData(data){
-        console.log(data)
         res.render('edit_customer', {
             title: 'Edit Customers',
             customer:data
@@ -38,11 +37,13 @@ router.get('/edit/:customer_id',function(req,res){
 
 router.post('/add',function(req,res){
     customer_queries.add_customer(req.body);
+    res.redirect('/');
 });
 
-router.post('/update',function(req,res){
-    console.log(req.body);
+router.post('/edit/update',function(req,res){
     customer_queries.update_customer(req.body);
+    res.send({redirect: '/'});
+    //res.redirect('/customers');
 });
 
 module.exports = router;
