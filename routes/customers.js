@@ -42,8 +42,7 @@ router.post('/add',function(req,res){
 
 router.post('/edit/update',function(req,res){
     customer_queries.update_customer(req.body);
-    res.send({redirect: '/'});
-    //res.redirect('/customers');
+    res.redirect('/');
 });
 
 module.exports = router;
