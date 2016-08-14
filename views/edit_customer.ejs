@@ -1,0 +1,48 @@
+<% layout('layout') -%>
+<h1><%= title %></h1>
+<table id="customerTable">
+    <tr>
+        <td>Name</td>
+        <td><input type="text" id="name" data-bind="value: first_name"></input></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><input type="text" id="address" data-bind="value: address"></input></td>
+    </tr>
+    <tr>
+        <td>phone</td>
+        <td><input type="text" id="phone" data-bind="value: phone"></input></td>
+    </tr>
+    <tfoot>
+    <tr>
+        <td>
+            <input type="button" value="Save" data-bind="click: save"/>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        ko.applyBindings(custVM({
+            id: "<%= customer.id %>",
+            name: "<%= customer.name %>",
+            address: "<%= customer.address %>",
+            phone: "<%= customer.phone %>"
+        }));
+    });
+
+    var custVM = function (customer) {
+        this.name = ko.observable(customer.name),
+                this.address = ko.observable(customer.address),
+                this.phone =ko.observable(customer.phone),
+                this.save = function () {
+                    $.post('update',
+                            {name: this.name(),
+                            address: this.address(),
+                            phone: this.phone()});
+                }
+
+        return this;
+    };
+</script>

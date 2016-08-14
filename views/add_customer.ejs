@@ -1,9 +1,9 @@
 <% layout('layout') -%>
-<h1>Add Customer</h1>
+<h1><%= title %></h1>
 <table id="customerTable">
     <tr>
         <td>Name</td>
-        <td><input type="text" id="name" data-bind="value: name"></input></td>
+        <td><input type="text" id="name" data-bind="value: customer_name"></input></td>
     </tr>
     <tr>
         <td>Address</td>
@@ -21,16 +21,19 @@
     </tr>
     </tfoot>
 </table>
+
 <script type="application/javascript">
-    var custVM = function(customer) {
-        var self = this;
-        self.name = customer ? ko.observable(customer.name) : '';
-        self.address = customer ? ko.observable(customer.address) : '';
-        self.phone = customer ? ko.observable(customer.phone) : '';
-        self.save = function () {
-            $.post('add', {name: this.name(), address: this.address(), phone: this.phone()});
+    $(document).ready(function () {
+        ko.applyBindings(custVM());
+    });
+
+    var custVM = function () {
+        this.customer_name = ko.observable(''),
+        this.address = ko.observable(''),
+        this.phone = ko.observable(''),
+        this.save = function () {
+            $.post('add', {name: this.customer_name(), address: this.address(), phone: this.phone()});
         }
-        return self;
-    }();
-    ko.applyBindings(custVM,$('customerTable')[0]);
+        return this;
+    };
 </script>
