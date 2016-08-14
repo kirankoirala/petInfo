@@ -11,7 +11,10 @@
         this.address = ko.observable(''),
         this.phone = ko.observable(''),
         this.save = function () {
-            $.post('add', {name: this.customer_name(), address: this.address(), phone: this.phone()});
+            $.post('add', {name: this.customer_name(), address: this.address(), phone: this.phone()},
+                    function (){
+                        window.location='/customers';
+                    });
         }
         return this;
     };
